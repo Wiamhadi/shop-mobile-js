@@ -1,50 +1,101 @@
-# Welcome to your Expo app 👋
+//Shop Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Application mobile e-commerce développée avec React Native (Expo), Node.js, Express et MongoDB Atlas.
+Elle permet aux utilisateurs de s’inscrire, se connecter, consulter des produits, gérer un panier et simuler un achat.
 
-## Get started
+//Fonctionnalités
 
-1. Install dependencies
+👤 Authentification
+Inscription utilisateur (MongoDB)
+Connexion sécurisée (bcrypt)
+Gestion utilisateur via Context API
+Profil dynamique (nom, email)
+🛒 Produits
+Liste de produits depuis API Node.js
+Détails produit
+Navigation produit → détail
+🛍 Panier
+Ajouter / supprimer produits
+Augmenter / diminuer quantité
+Calcul automatique du total
+Bouton “Payer” (simulation)
+📱 Interface
+Navigation avec React Navigation
+UI simple et responsive
+Gestion d’état globale (Context API)
+🧱 Stack technique
+Frontend
+React Native (Expo)
+React Navigation
+Context API
+Fetch API
+Backend
+Node.js
+Express.js
+MongoDB Atlas
+Mongoose
+bcryptjs
 
-   ```bash
-   npm install
-   ```
+// Structure du projet
+shop-mobile-js/
+│
+├── backend/
+│   ├── models/
+│   │   └── User.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── products.js
+│   │   └── cart.js
+│   └── server.js
+│
+├── context/
+│   ├── AuthContext.js
+│   └── CartContext.js
+│
+├── screens/
+│   ├── Login.js
+│   ├── Register.js
+│   ├── Home.js
+│   ├── Product.js
+│   ├── Cart.js
+│   └── Profile.js
+│
+└── App.js
 
-2. Start the app
+//Installation
 
-   ```bash
-   npx expo start
-   ```
+1. Backend
+cd backend
+npm install
+node server.js
 
-In the output, you'll find options to open the app in a
+📌 Backend tourne sur :
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+http://localhost:5000
+2. Frontend (Expo)
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+npm install
+npx expo start
+🔌 Configuration API
 
-## Get a fresh project
+Dans le frontend, remplace l’IP par ton IP locale :
 
-When you're ready, run:
+http://172.16.18.85:5000
+🧠 Base de données MongoDB
 
-```bash
-npm run reset-project
-```
+//Collections :
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+users
+products
+cart (optionnel)
+🔐 Auth Flow
+Register → MongoDB
+Login → vérification bcrypt
+Backend retourne user
+Context stocke user
+App affiche Home
+🛒 Cart Flow
+addToCart(product)
+increaseQty / decreaseQty
+removeFromCart
+total calculé dynamiquement
